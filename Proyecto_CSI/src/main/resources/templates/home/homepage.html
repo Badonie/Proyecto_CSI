@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>UEFA</title>
+        <meta http-equiv="cache-control" charset="UTF-8" name="keywords" lang="es"></meta>
+        <link rel="stylesheet" th:href= "@{/css/homepage.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+
+        <!--------------------------------------------------{ SIDE BAR }-------------------------------------------------->
+
+        <div id="wrapper"> <!-- Contains everything of and related to the siderbar. -->   
+            
+            <input type="checkbox" id="button"> <!-- The input of the button that opens and closes the sidebar. -->
+            <label for="button" id="button-menu"> <!-- The button. -->
+                <i class="fa-solid fa-bars"></i> <!-- The 3 bars icon on the button. -->
+            </label>
+
+            <nav id="sidebar"> <!-- Contains everything in the sidebar. -->
+
+                <div id="title"> <!-- Box wich contains the UEFA logo. -->
+                    <img id="logo" th:src="@{/imagenesInicio/uefaemblem.png}"> <!-- The UEFA logo. -->
+                </div>
+
+                <ul id="options"> <!-- Contains all the options that you can choose in the sidebar. -->
+
+                    <!-- The "#" is where you will put the direction you want this button to take you. -->
+                    <!-- The "fas fa-(something)" is the icon from font awesome. -->
+
+                    <li><a th:href= "@{/}"><i class="fa-solid fa-house"></i></i>Inicio</a></li> <!-- Home "button" with its icon. -->
+                    <li><a th:href="@{/login}"><i class="fa-solid fa-address-book"></i>Iniciar Sesión</a></li> <!-- Clients "button" with its icon. -->
+                    <li><a href="#"><i class="fa-solid fa-gear"></i>Ajustes</a></li> <!-- Settings "button" with its icon. -->
+                    <li><a href="#"><i class="fa-solid fa-bars-staggered"></i>Características</a></li> <!-- Features "button" with its icon. -->
+                    <li><a href="#"><i class="fa-solid fa-user"></i>Sobre nosostros</a></li> <!-- About Us "button" with its icon. -->
+                    <li><a href="#"><i class="fa-solid fa-envelope"></i>Contáctanos</a></li> <!-- Contact Us "button" with its icon. -->
+
+                    <div id="icons"> <!-- Contains the buttons that will redirect you to his icon page. -->
+                        <a href="https://www.facebook.com/lasallesantoangelzaragoza/?locale=es_ES"><i class="fa-brands fa-facebook"></i></a> <!-- Facebook button and icon. -->
+                        <a href="https://twitter.com/salleSAZgz"><i class="fa-brands fa-twitter"></i></a> <!-- Twitter button and icon. -->
+                        <a href="https://github.com/juan291100/Proyecto_CSI"><i class="fa-brands fa-github"></i></a> <!-- Github button and icon. -->
+                        <a href="https://www.instagram.com/lasallesantoangelzaragoza/?hl=es"><i class="fa-brands fa-instagram"></i></a> <!-- Instagram button and icon. -->
+                    </div>
+                </ul>
+            </nav>
+
+            <div id="unclickable"></div> <!-- The unclickable black area that appears when the sidebar is open. -->
+
+        </div>
+    
+        <!---------------------------------------------------------------------------------------------------------------->
+
+
+
+        <!-------------------------------------------------{ SLIDESHOW }-------------------------------------------------->
+
+        <div class="sliders-text-mini"></div>
+
+        <div class="opacity"></div> <!-- Opacity above the images, to give them a more dark filter. -->
+
+        <div class="slideshow-container"> <!-- Area wich contains all the images and their text. -->
+
+            <div class="slides"> <!-- Slides area wich contains the first image and your text. -->
+                <img class="images" th:src="@{/imagenesInicio/background3.jpg}"> <!-- First background image. -->
+                <div class="sliders-text"> <!-- Box wich contains this image text. -->                   
+                    Estoy viviendo un sueño del que no quiero despertar nunca
+                </div>
+            </div>
+        
+            <div class="slides"> <!-- Slides area wich contains the second image and your text. -->
+                <img class="images" th:src="@{/imagenesInicio/background2.jpg}"> <!-- Second background image. -->
+                <div class="sliders-text"> <!-- Box wich contains this image text. -->
+                    Reconocer la derrota es la primera etapa de la victoria
+                </div>
+            </div>
+        
+            <div class="slides"> <!-- Slides area wich contains the third image and your text. -->     
+                <img class="images" th:src="@{/imagenesInicio/background1.jpg}"> <!-- Third background image. -->
+                <div class="sliders-text"> <!-- Box wich contains this image text. -->                 
+                    En el campo todos somos iguales cuando empieza el partido                
+                </div>
+            </div>
+               
+            <a class="prev" onclick="plusSlides(-1)"><i class="fa-solid fa-angle-left"></i></a> <!-- Previous image button. -->
+            <a class="next" onclick="plusSlides(1)"><i class="fa-solid fa-angle-right"></i></a> <!-- Next image button. -->
+
+        </div><br>
+    
+        
+        <div class="dot-box"> <!-- Box wich contains the dots. -->
+            <span class="dot" onclick="currentSlide(1)"></span> <!-- First dot. -->
+            <span class="dot" onclick="currentSlide(2)"></span> <!-- Second dot. -->
+            <span class="dot" onclick="currentSlide(3)"></span> <!-- Third dot. -->
+        </div>
+
+        <!-------------------------------------------{ SLIDESHOW JAVA SCRIPT }-------------------------------------------->
+
+        <script> // Java Script for the slideshow.
+
+            let slideIndex = 1;
+            showSlides(slideIndex);
+
+            // Next/previous controls
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("slides");
+                let dots = document.getElementsByClassName("dot");
+
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+
+                if (n < 1) {
+                    slideIndex = slides.length
+                }
+
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+            }           
+
+        </script>
+        
+        <!---------------------------------------------------------------------------------------------------------------->
+
+
+
+        <!---------------------------------------------------{ OTHERS }--------------------------------------------------->
+
+        <div id="background-mini"></div>
+
+        <a id="button-login" th:href="@{/login}"> <!-- The login button. -->
+            <i class="fa-solid fa-user"></i> <!-- User icon. -->
+        </a>
+
+        <div id="main-box">
+            <img id="main-logo" th:src="@{/imagenesInicio/uefaemblem.png}"> <!-- UEFA logo in the center of the main page. -->
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------->
+
+    </body>
+</html>
